@@ -68,19 +68,36 @@ for (const [id, name] of Object.entries(authors)) {
 document.querySelector("[data-search-authors]").appendChild(authorsHtml);
 
 // Setting theme based on user's preference
-if (
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches
-) {
+const saveButton = getElement("[data-settings-save]");
+const cancelButton = getElement("[data-settings-cancel]");
+const form = getElement("[data-settings-form]");
+
+const applyTheme = (theme) => {
+  document.documentElement.style.setProperty(
+    "--color-dark",
+    theme === "night" ? "255, 255, 255" : "10, 10, 20"
+  );
+  document.documentElement.style.setProperty(
+    "--color-light",
+    theme === "night" ? "10, 10, 20" : "255, 255, 255"
+  );
+};
+
+if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
   document.querySelector("[data-settings-theme]").value = "night";
-  document.documentElement.style.setProperty("--color-dark", "255, 255, 255");
-  document.documentElement.style.setProperty("--color-light", "10, 10, 20");
+  applyTheme("night");
 } else {
   document.querySelector("[data-settings-theme]").value = "day";
-  document.documentElement.style.setProperty("--color-dark", "10, 10, 20");
-  document.documentElement.style.setProperty("--color-light", "255, 255, 255");
+  applyTheme("day");
 }
 
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = new FormData(form);
+  const theme = formData.get("theme");
+  applyTheme(theme);
+  getElement("[data-settings-overlay]").open = false;
+});
 // Setting text and disabled state for show more button
 document.querySelector("[data-list-button]").innerText = `Show more (${
   books.length - BOOKS_PER_PAGE
