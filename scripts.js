@@ -92,3 +92,8 @@ const applySearchFilters = (filters) => {
     return titleMatch && authorMatch && genreMatch;
   });
 };
+
+// Event listeners
+getElement("[data-search-cancel]").addEventListener("click", () =>
+  closeOverlay("[data-search-overlay]")
+);
