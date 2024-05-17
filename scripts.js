@@ -97,19 +97,15 @@ const applySearchFilters = (filters) => {
 getElement("[data-search-cancel]").addEventListener("click", () =>
   closeOverlay("[data-search-overlay]")
 );
-
 getElement("[data-settings-cancel]").addEventListener("click", () =>
   closeOverlay("[data-settings-overlay]")
 );
-
 getElement("[data-header-search]").addEventListener("click", () =>
   openOverlay("[data-search-overlay]", "[data-search-title]")
 );
-
 getElement("[data-header-settings]").addEventListener("click", () =>
   openOverlay("[data-settings-overlay]")
 );
-
 getElement("[data-list-close]").addEventListener("click", () =>
   closeOverlay("[data-list-active]")
 );
@@ -175,7 +171,6 @@ createOptions(authors, "All Authors", getElement("[data-search-authors]"));
 applyTheme(
   window.matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day"
 );
-
 createBookPreviews(
   matches.slice(0, BOOKS_PER_PAGE),
   getElement("[data-list-items]")
