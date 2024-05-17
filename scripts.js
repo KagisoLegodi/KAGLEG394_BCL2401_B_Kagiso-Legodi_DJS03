@@ -109,3 +109,7 @@ getElement("[data-header-search]").addEventListener("click", () =>
 getElement("[data-header-settings]").addEventListener("click", () =>
   openOverlay("[data-settings-overlay]")
 );
+
+getElement("[data-list-close]").addEventListener("click", () =>
+  closeOverlay("[data-list-active]")
+);
