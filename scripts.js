@@ -175,3 +175,8 @@ createOptions(authors, "All Authors", getElement("[data-search-authors]"));
 applyTheme(
   window.matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day"
 );
+
+createBookPreviews(
+  matches.slice(0, BOOKS_PER_PAGE),
+  getElement("[data-list-items]")
+);
