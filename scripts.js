@@ -64,7 +64,9 @@ const updateShowMoreButton = () => {
   button.disabled = remainingBooks <= 0;
   button.innerHTML = `
     <span>Show more</span>
-    <span class="list__remaining">(${remainingBooks > 0 ? remainingBooks : 0})</span>
+    <span class="list__remaining">(${
+      remainingBooks > 0 ? remainingBooks : 0
+    })</span>
   `;
 };
 
