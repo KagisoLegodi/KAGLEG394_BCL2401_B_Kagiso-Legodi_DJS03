@@ -74,3 +74,8 @@ const updateShowMoreButton = () => {
 const closeOverlay = (selector) => {
   getElement(selector).open = false;
 };
+
+const openOverlay = (selector, focusSelector = null) => {
+  getElement(selector).open = true;
+  if (focusSelector) getElement(focusSelector).focus();
+};
