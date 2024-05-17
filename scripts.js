@@ -73,3 +73,4 @@ const updateShowMoreButton = () => {
 // Event listener functions
 const closeOverlay = (selector) => {
   getElement(selector).open = false;
+};
