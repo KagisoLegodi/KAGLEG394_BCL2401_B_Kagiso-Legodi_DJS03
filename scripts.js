@@ -113,3 +113,11 @@ getElement("[data-header-settings]").addEventListener("click", () =>
 getElement("[data-list-close]").addEventListener("click", () =>
   closeOverlay("[data-list-active]")
 );
+
+getElement("[data-settings-form]").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const { theme } = Object.fromEntries(formData);
+  applyTheme(theme);
+  closeOverlay("[data-settings-overlay]");
+});
