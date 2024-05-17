@@ -97,3 +97,7 @@ const applySearchFilters = (filters) => {
 getElement("[data-search-cancel]").addEventListener("click", () =>
   closeOverlay("[data-search-overlay]")
 );
+
+getElement("[data-settings-cancel]").addEventListener("click", () =>
+  closeOverlay("[data-settings-overlay]")
+);
