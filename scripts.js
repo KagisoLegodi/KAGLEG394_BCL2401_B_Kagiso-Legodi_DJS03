@@ -5,8 +5,8 @@ import { books, authors, genres, BOOKS_PER_PAGE } from "./data.js";
 let page = 1;
 let matches = books;
 
-// Creating a document fragment for initial book previews
-const starting = document.createDocumentFragment();
+// Function to get DOM elements
+const getElement = (selector) => document.querySelector(selector);
 
 // Iterating through the initial matches to populate the starting document fragment
 for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
