@@ -1,7 +1,7 @@
 // Importing necessary data and constants from data.js file
 import { books, authors, genres, BOOKS_PER_PAGE } from "./data.js";
 
-// Initializing page number and matches array
+// Initialize page number and matches array
 let page = 1;
 let matches = books;
 
@@ -43,40 +43,16 @@ const createOptions = (options, defaultOption, container) => {
   container.appendChild(fragment);
 };
 
-// Appending genre dropdown options to the genre dropdown container
-document.querySelector("[data-search-genres]").appendChild(genreHtml);
-
-// Creating document fragment for author dropdown options
-const authorsHtml = document.createDocumentFragment();
-const firstAuthorElement = document.createElement("option");
-firstAuthorElement.value = "any";
-firstAuthorElement.innerText = "All Authors";
-authorsHtml.appendChild(firstAuthorElement);
-
-// Populating author dropdown options
-for (const [id, name] of Object.entries(authors)) {
-  const element = document.createElement("option");
-  element.value = id;
-  element.innerText = name;
-  authorsHtml.appendChild(element);
-}
-
-// Appending author dropdown options to the author dropdown container
-document.querySelector("[data-search-authors]").appendChild(authorsHtml);
-
-// Setting theme based on user's preference
-const saveButton = getElement("[data-settings-save]");
-const cancelButton = getElement("[data-settings-cancel]");
-const form = getElement("[data-settings-form]");
-
+// Function to apply theme
 const applyTheme = (theme) => {
+  const isNight = theme === "night";
   document.documentElement.style.setProperty(
     "--color-dark",
-    theme === "night" ? "255, 255, 255" : "10, 10, 20"
+    isNight ? "255, 255, 255" : "10, 10, 20"
   );
   document.documentElement.style.setProperty(
     "--color-light",
-    theme === "night" ? "10, 10, 20" : "255, 255, 255"
+    isNight ? "10, 10, 20" : "255, 255, 255"
   );
 };
 
