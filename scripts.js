@@ -168,3 +168,10 @@ getElement("[data-list-items]").addEventListener("click", (event) => {
     }
   }
 });
+
+// Initial setup
+createOptions(genres, "All Genres", getElement("[data-search-genres]"));
+createOptions(authors, "All Authors", getElement("[data-search-authors]"));
+applyTheme(
+  window.matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day"
+);
