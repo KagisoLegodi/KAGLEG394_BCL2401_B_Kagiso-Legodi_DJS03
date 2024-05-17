@@ -105,3 +105,7 @@ getElement("[data-settings-cancel]").addEventListener("click", () =>
 getElement("[data-header-search]").addEventListener("click", () =>
   openOverlay("[data-search-overlay]", "[data-search-title]")
 );
+
+getElement("[data-header-settings]").addEventListener("click", () =>
+  openOverlay("[data-settings-overlay]")
+);
