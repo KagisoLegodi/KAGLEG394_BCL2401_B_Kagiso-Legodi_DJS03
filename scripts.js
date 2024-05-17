@@ -180,3 +180,4 @@ createBookPreviews(
   matches.slice(0, BOOKS_PER_PAGE),
   getElement("[data-list-items]")
 );
+updateShowMoreButton();
