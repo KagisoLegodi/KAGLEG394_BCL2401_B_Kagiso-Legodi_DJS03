@@ -8,29 +8,24 @@ let matches = books;
 // Function to get DOM elements
 const getElement = (selector) => document.querySelector(selector);
 
-// Iterating through the initial matches to populate the starting document fragment
-for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
-  // Creating button element for each book preview
-  const element = document.createElement("button");
-  element.classList = "preview";
-  element.setAttribute("data-preview", id);
-
-  // Populating inner HTML of the button element with book information
-  element.innerHTML = `
-        <img
-            class="preview__image"
-            src="${image}"
-        />
-        
-        <div class="preview__info">
-            <h3 class="preview__title">${title}</h3>
-            <div class="preview__author">${authors[author]}</div>
-        </div>
+// Function to create and append book previews
+const createBookPreviews = (books, container) => {
+  const fragment = document.createDocumentFragment();
+  books.forEach(({ author, id, image, title }) => {
+    const element = document.createElement("button");
+    element.classList = "preview";
+    element.setAttribute("data-preview", id);
+    element.innerHTML = `
+      <img class="preview__image" src="${image}" />
+      <div class="preview__info">
+        <h3 class="preview__title">${title}</h3>
+        <div class="preview__author">${authors[author]}</div>
+      </div>
     `;
-
-  // Appending button element to the starting document fragment
-  starting.appendChild(element);
-}
+    fragment.appendChild(element);
+  });
+  container.appendChild(fragment);
+};
 
 // Appending starting document fragment to the list items container
 document.querySelector("[data-list-items]").appendChild(starting);
