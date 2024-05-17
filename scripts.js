@@ -121,3 +121,23 @@ getElement("[data-settings-form]").addEventListener("submit", (event) => {
   applyTheme(theme);
   closeOverlay("[data-settings-overlay]");
 });
+
+getElement("[data-search-form]").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const filters = Object.fromEntries(formData);
+  matches = applySearchFilters(filters);
+  page = 1;
+  getElement("[data-list-message]").classList.toggle(
+    "list__message_show",
+    matches.length < 1
+  );
+  getElement("[data-list-items]").innerHTML = "";
+  createBookPreviews(
+    matches.slice(0, BOOKS_PER_PAGE),
+    getElement("[data-list-items]")
+  );
+  updateShowMoreButton();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  closeOverlay("[data-search-overlay]");
+});
