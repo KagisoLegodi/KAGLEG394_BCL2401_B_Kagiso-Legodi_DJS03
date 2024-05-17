@@ -27,7 +27,8 @@ const createBookPreviews = (books, container) => {
   container.appendChild(fragment);
 };
 
-// Appending starting document fragment to the list items container
+const starting = document.createDocumentFragment();
+createBookPreviews(matches.slice(0, BOOKS_PER_PAGE), starting);
 document.querySelector("[data-list-items]").appendChild(starting);
 
 // Creating document fragment for genre dropdown options
